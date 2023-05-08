@@ -10,10 +10,6 @@ and five, it returns “FizzBuzz.”
 import {fizzBuzz} from './fizzbuzz';
 
 describe("fizzbuzz", () => {
-    it('returns a string', () => {
-        expect(fizzBuzz(5)).toBe('string')
-    })
-
     it('returns fizz when given 3', () => {
         expect(fizzBuzz(3)).toBe('Fizz')
     })
