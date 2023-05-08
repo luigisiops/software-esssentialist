@@ -8,4 +8,6 @@ describe('palindrome checker', () => {
     it('knows dog is not a palindrome', () => {
         expect(palindrome('dog')).toBe(false)
     })
+
+    
 })
