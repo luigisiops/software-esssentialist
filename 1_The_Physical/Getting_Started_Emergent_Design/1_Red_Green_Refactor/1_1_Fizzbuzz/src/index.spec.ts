@@ -22,7 +22,7 @@ describe("fizzbuzz", () => {
         expect(fizzBuzz(5)).toBe('Buzz')
     })
 
-    it ('returns FizzBuzz for multiples of 3 and 5'), () => {
-        expect(fizzBuzz(15).toBe('FizzBuzz'))
-    }
+    it ('returns FizzBuzz for multiples of 3 and 5', () => {
+        expect(fizzBuzz(15)).toBe('FizzBuzz')
+    })
 });
