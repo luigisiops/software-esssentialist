@@ -9,5 +9,11 @@ describe('palindrome checker', () => {
         expect(palindrome('dog')).toBe(false)
     })
 
-    
+    it('knows racecar is a palindrome', () => {
+        expect(palindrome('racecar')).toBe(true)
+    })
+
+    it ('knows RaCecAr is a palindrome regardless of casing', () => {
+        expect(palindrome('RaCecAr')).toBe(true)
+    })
 })
