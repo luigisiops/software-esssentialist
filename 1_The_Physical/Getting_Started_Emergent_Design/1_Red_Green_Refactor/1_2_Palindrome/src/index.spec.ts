@@ -1,6 +1,7 @@
+import {palindrome} from './index';
 
 describe('palindrome checker', () => {
     it('knows that mom is a palindrome', () => {
-        expect(palindrome).toBe(true)
+        expect(palindrome('mom')).toBe(true)
     })
 })
