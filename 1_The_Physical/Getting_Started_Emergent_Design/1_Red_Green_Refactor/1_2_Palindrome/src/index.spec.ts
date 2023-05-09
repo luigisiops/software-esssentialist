@@ -16,4 +16,12 @@ describe('palindrome checker', () => {
     it ('knows RaCecAr is a palindrome regardless of casing', () => {
         expect(palindrome('RaCecAr')).toBe(true)
     })
+
+    it('knows that TeStiNg is not a palindrome', () => {
+        expect(palindrome('TeStiNg')).toBe(false)
+    })
+
+    it('knows  D  og g oD is a palindrome even with spacing', () => {
+        expect(palindrome(' D  og g oD')).toBe(true)
+    } )
 })
