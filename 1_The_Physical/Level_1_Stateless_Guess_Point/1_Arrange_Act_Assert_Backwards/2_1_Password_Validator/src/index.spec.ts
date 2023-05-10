@@ -32,12 +32,17 @@ describe('password validator', () => {
 
 
   test('that password has at least 1 capital letter', () => {
-    const returnObject = passwordValidator('password')
-    expect(returnObject.result).toBeFalsy()
-    expect(returnObject.errors[0].type).toEqual('No Capital Letter')
-    expect(returnObject.errors[0].message).toContain('1 capital letter')
-  })
+    const failResponse = passwordValidator('password')
+    const successResponse = passwordValidator('ThisWorks12')
 
+    expect(failResponse.result).toBeFalsy()
+    expect(failResponse.errors[0].type).toEqual('No Capital Letter')
+    expect(failResponse.errors[0].message).toContain('1 capital letter')
+
+    expect(successResponse.result).toBeTruthy()
+    expect(successResponse.errors.length).toEqual(0)
+  })
+  
 })
 
 
