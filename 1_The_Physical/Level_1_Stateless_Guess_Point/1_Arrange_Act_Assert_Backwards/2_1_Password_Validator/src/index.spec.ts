@@ -24,6 +24,12 @@ describe('password validator', () => {
     expect(longPasswordObject.errors[0].type).toEqual('Invalid Length')
     expect(longPasswordObject.errors[0].message).toContain('5 and 15')
   })
+
+  it('returns response when password is between 5 and 15 characters long', () => {
+    const returnObject = passwordValidator('password')
+    expect(returnObject.result).toBeTruthy()
+    expect(returnObject.errors.length).toEqual(0)
+  })
 })
 
 
