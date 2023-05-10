@@ -15,21 +15,21 @@ import {passwordValidator} from './index';
 describe('password validator', () => {
   it('throws error when password is not between 5 and 15 characters long', () => {
     const shortPasswordObject = passwordValidator('dog1')
-    const longPasswordObject = passwordValidator('somelongpassword123')
+    const longPasswordObject = passwordValidator('somelongpassword123')    
+    const returnObject = passwordValidator('password')
+
     expect(shortPasswordObject.result).toBeFalsy()
     expect(shortPasswordObject.errors[0].type).toEqual('Invalid Length')
     expect(shortPasswordObject.errors[0].message).toContain('5 and 15')
 
     expect(longPasswordObject.result).toBeFalsy()
     expect(longPasswordObject.errors[0].type).toEqual('Invalid Length')
-    expect(longPasswordObject.errors[0].message).toContain('5 and 15')
-  })
-
-  it('returns response when password is between 5 and 15 characters long', () => {
-    const returnObject = passwordValidator('password')
+    expect(longPasswordObject.errors[0].message).toContain('5 and 15') 
+    
     expect(returnObject.result).toBeTruthy()
     expect(returnObject.errors.length).toEqual(0)
   })
+
 })
 
 
