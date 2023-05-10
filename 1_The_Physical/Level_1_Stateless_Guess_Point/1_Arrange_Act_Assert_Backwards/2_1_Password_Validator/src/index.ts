@@ -18,6 +18,27 @@ export function passwordValidator(password:string) {
             }]
         }
     }
+
+    let hasNumber = false
+    const numbers = new Set(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'])
+    for (let i = 0; i<password.length; i++) {
+        let char = password[i]
+        if (numbers.has(char)){
+            hasNumber = true
+        }
+    }
+
+    if (!hasNumber) {
+        return {
+            result: false,
+            errors: [
+                {
+                    type: 'Needs at least 1 Digit',
+                    message: 'Password needs to have at least 1 digit'
+                }]
+        }
+    }
+
     return {
         result: true,
         errors:[]

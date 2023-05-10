@@ -16,7 +16,7 @@ describe('password validator', () => {
   it('throws error when password is not between 5 and 15 characters long', () => {
     const shortPasswordObject = passwordValidator('dog1')
     const longPasswordObject = passwordValidator('somelongpassword123')    
-    const returnObject = passwordValidator('Password')
+    const returnObject = passwordValidator('Password1')
 
     expect(shortPasswordObject.result).toBeFalsy()
     expect(shortPasswordObject.errors[0].type).toEqual('Invalid Length')
@@ -43,6 +43,19 @@ describe('password validator', () => {
     expect(successResponse.errors.length).toEqual(0)
   })
   
+  test('that password has at least 1 digit', () => {
+    const failResponse = passwordValidator('SecurePass')
+    const successResponse = passwordValidator('SecurePass1')
+
+    expect(failResponse.result).toBeFalsy()
+    expect(failResponse.errors[0].type).toEqual('Needs at least 1 Digit')
+    expect(failResponse.errors[0].message).toContain('1 digit')  
+
+    expect(successResponse.result).toBeTruthy()
+    expect(successResponse.errors.length).toEqual(0)
+  })
+
+
 })
 
 
