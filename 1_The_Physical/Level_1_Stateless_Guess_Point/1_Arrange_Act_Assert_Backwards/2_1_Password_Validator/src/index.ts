@@ -8,6 +8,16 @@ export function passwordValidator(password:string) {
             }]
         }
     }
+
+    if (password == password.toLowerCase()) {
+        return {
+            result: false,
+            errors: [
+                {type: 'No Capital Letter',
+                message: 'Password needs to have at least 1 capital letter'
+            }]
+        }
+    }
     return {
         result: true,
         errors:[]

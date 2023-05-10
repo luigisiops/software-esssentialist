@@ -16,7 +16,7 @@ describe('password validator', () => {
   it('throws error when password is not between 5 and 15 characters long', () => {
     const shortPasswordObject = passwordValidator('dog1')
     const longPasswordObject = passwordValidator('somelongpassword123')    
-    const returnObject = passwordValidator('password')
+    const returnObject = passwordValidator('Password')
 
     expect(shortPasswordObject.result).toBeFalsy()
     expect(shortPasswordObject.errors[0].type).toEqual('Invalid Length')
@@ -28,6 +28,14 @@ describe('password validator', () => {
     
     expect(returnObject.result).toBeTruthy()
     expect(returnObject.errors.length).toEqual(0)
+  })
+
+
+  test('that password has at least 1 capital letter', () => {
+    const returnObject = passwordValidator('password')
+    expect(returnObject.result).toBeFalsy()
+    expect(returnObject.errors[0].type).toEqual('No Capital Letter')
+    expect(returnObject.errors[0].message).toContain('1 capital letter')
   })
 
 })
