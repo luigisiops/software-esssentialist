@@ -14,7 +14,14 @@ import {passwordValidator} from './index';
 
 describe('password validator', () => {
   describe('A valid password must be between 5 and 15 characters long', () => {
-    it('knows that Dog1 is too short of a password', () => {
+    it('knows that Dog1, C2, and mom are too short of a password', () => {
+      ['Dog1', 'C2', 'mom'].map((multiple) => passwordValidator(multiple))
+      .forEach((resultObject) =>{
+        expect(resultObject.result).toBeFalsy()
+        expect(resultObject.errors[0].type).toEqual('Invalid Length')
+        expect(resultObject.errors[0].message).toContain('5 and 15')
+      }
+      )
       const shortPasswordObject = passwordValidator('Dog1')
       expect(shortPasswordObject.result).toBeFalsy()
       expect(shortPasswordObject.errors[0].type).toEqual('Invalid Length')
