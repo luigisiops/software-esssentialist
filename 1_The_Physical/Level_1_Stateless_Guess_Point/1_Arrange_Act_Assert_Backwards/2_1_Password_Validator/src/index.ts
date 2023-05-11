@@ -1,22 +1,24 @@
-export function passwordValidator(password:string) {
+interface IError {
+    type: string;
+    message: string;
+}
+
+export function passwordValidator(password:string){
+    let result: boolean = true;
+    let errors:IError[] = [];
+
     if (password.length < 5 || password.length > 15) {
-        return {
-            result: false,
-            errors: [
-                {type: 'Invalid Length', 
-                message: 'Password length must be between 5 and 15 characters'
-            }]
-        }
+        errors.push({
+            type: 'Invalid Length',
+            message: 'Password length must be between 5 and 15 characters'
+        })
     }
 
     if (password == password.toLowerCase()) {
-        return {
-            result: false,
-            errors: [
-                {type: 'No Capital Letter',
-                message: 'Password needs to have at least 1 capital letter'
-            }]
-        }
+        errors.push({
+            type: 'No Capital Letter',
+            message: 'Password needs to have at least 1 capital letter'
+        })
     }
 
     let hasNumber = false
@@ -27,20 +29,15 @@ export function passwordValidator(password:string) {
             hasNumber = true
         }
     }
-
     if (!hasNumber) {
-        return {
-            result: false,
-            errors: [
-                {
-                    type: 'Needs at least 1 Digit',
-                    message: 'Password needs to have at least 1 digit'
-                }]
-        }
+        errors.push({
+            type: 'Needs at least 1 Digit',
+            message: 'Password needs to have at least 1 digit'
+        })
     }
-
+    
     return {
-        result: true,
-        errors:[]
+        result: errors.length == 0 ? true : false,
+        errors: errors
     }
 }

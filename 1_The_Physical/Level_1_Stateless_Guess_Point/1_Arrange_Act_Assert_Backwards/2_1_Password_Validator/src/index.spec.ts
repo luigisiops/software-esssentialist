@@ -17,7 +17,6 @@ describe('password validator', () => {
     const shortPasswordObject = passwordValidator('dog1')
     const longPasswordObject = passwordValidator('somelongpassword123')    
     const returnObject = passwordValidator('Password1')
-
     expect(shortPasswordObject.result).toBeFalsy()
     expect(shortPasswordObject.errors[0].type).toEqual('Invalid Length')
     expect(shortPasswordObject.errors[0].message).toContain('5 and 15')
@@ -53,6 +52,7 @@ describe('password validator', () => {
 
     expect(successResponse.result).toBeTruthy()
     expect(successResponse.errors.length).toEqual(0)
+
   })
 
 
