@@ -67,4 +67,25 @@ describe('stats calculator', () => {
             expect(numberLength).toBe(0)
         })
     })
+
+    describe('should be able to get the number of elements inputted', () => {
+        it('knows [1,2,3,4,5,6,7,8,9,0] has 10 elements', () => {
+            const numberLength = statsCalculator.getNumberOfElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
+            expect(numberLength).toBe(10)
+        })
+        it('knows [1] has 1 element', () => {
+            const numberLength = statsCalculator.getNumberOfElements([1])
+            expect(numberLength).toBe(1)
+        })
+        it('knows [] has 0 elements', () => {
+            const numberLength = statsCalculator.getNumberOfElements([])
+            expect(numberLength).toBe(0)
+        })
+    })
+
+    describe('should be able to get the average of the numbers', () => {
+        it('knows [1,2,3,4,5] has an average value of 3', () => {
+            expect(statsCalculator.getAverage([1,2,3,4,5])).toBe(3)
+        })
+    })
 })

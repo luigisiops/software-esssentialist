@@ -31,6 +31,20 @@ export class StatsCalculator{
         return minVal
     }
 
+    private sumElements(numbers: number[]) {
+        let summation = 0
+        for (let i = 0; i<numbers.length; i++) {
+            summation += numbers[i]
+        }
+        return summation
+    }
+
+    public getAverage(numbers: number[]) {
+        const length = this.getNumberOfElements(numbers)
+        const summation = this.sumElements(numbers)
+        return (summation / length)
+    }
+
     public static create() {
         return new StatsCalculator()
     }
