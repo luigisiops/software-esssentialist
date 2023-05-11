@@ -33,5 +33,11 @@ describe('stats calculator', () => {
             expect(minVal).toBe(-8)
         })
 
+        it('returns null for empty input val', () => {
+            const statsCalculator = StatsCalculator.create()
+            const minVal = statsCalculator.getMin([])
+            expect(minVal).toBe(null)
+        })
+
     })
 })
