@@ -1,48 +1,35 @@
 export class StatsCalculator{
-    private constructor() {
+    private constructor() {}
 
-    }
-
-    public getNumberOfElements(numbers: number[]) {
-        return numbers.length
-    }
-
-    public getMax(numbers: number[]) {
-        if (numbers.length == 0) return null
+    public getStatistics(numbers: number[]) {
+        if (numbers.length === 0) {
+            return {minVal: null, maxVal: null, numberOfElements: 0, average: null}
+        }
+        
+        let minVal = numbers[0]
         let maxVal = numbers[0]
-        for (let i = 0; i < numbers.length; i++) {
+        let summation = 0
+        const numberOfElements = numbers.length
+        for (let i = 0; i<numbers.length; i++) {
             const currVal = numbers[i]
-            if (currVal > maxVal) {
+
+            if(currVal > maxVal) {
                 maxVal = currVal
             }
-        }
-        return maxVal
-    }
 
-    public getMin(numbers: number[]) {
-        if (numbers.length == 0) return null
-        let minVal = numbers[0]
-        for (let i = 0; i < numbers.length; i++) {
-            const currVal = numbers[i]
-            if (currVal < minVal) {
-                minVal = currVal
+            if(currVal < minVal) {
+                minVal = minVal
             }
-        }
-        return minVal
-    }
 
-    private sumElements(numbers: number[]) {
-        let summation = 0
-        for (let i = 0; i<numbers.length; i++) {
-            summation += numbers[i]
+            summation += currVal
         }
-        return summation
-    }
 
-    public getAverage(numbers: number[]) {
-        const length = this.getNumberOfElements(numbers)
-        const summation = this.sumElements(numbers)
-        return (summation / length)
+        return {
+            minVal,
+            maxVal,
+            numberOfElements,
+            average: summation/numberOfElements
+        }
     }
 
     public static create() {
