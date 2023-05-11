@@ -4,7 +4,15 @@ export class StatsCalculator{
     }
 
     public getMax(numbers: number[]) {
-        return 5
+        if (numbers.length == 0) return null
+        let maxVal = numbers[0]
+        for (let i = 0; i < numbers.length; i++) {
+            const currVal = numbers[i]
+            if (currVal > maxVal) {
+                maxVal = currVal
+            }
+        }
+        return maxVal
     }
 
     public getMin(numbers: number[]) {

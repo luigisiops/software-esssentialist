@@ -49,5 +49,10 @@ describe('stats calculator', () => {
             const maxVal = statsCalculator.getMax([1, 2, 3, 4, 5])
             expect(maxVal).toBe(5)
         })
+
+        it('knows 0 is the maximum given [-1, -2, -9, 0]', () => {
+            const maxVal = statsCalculator.getMax([-1, -2, -9, 0])
+            expect(maxVal).toBe(0)
+        })
     })
 })
