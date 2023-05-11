@@ -59,6 +59,22 @@ describe('password validator', () => {
 
   })
 
+  it('should throw all three error messages given password: dog', () => {
+    const responseObject = passwordValidator('dog')
+
+    expect(responseObject.result).toBeFalsy()
+    expect(responseObject.errors.length).toEqual(3)
+
+    expect(responseObject.errors[0].type).toEqual('Invalid Length')
+    expect(responseObject.errors[0].message).toContain('5 and 15')
+
+    expect(responseObject.errors[1].type).toEqual('No Capital Letter')
+    expect(responseObject.errors[1].message).toContain('1 capital letter')
+
+    expect(responseObject.errors[2].type).toEqual('Needs at least 1 Digit')
+    expect(responseObject.errors[2].message).toContain('1 digit')  
+  })
+
 
 })
 
