@@ -10,17 +10,11 @@ export class StatsCalculator{
         let maxVal = numbers[0]
         let summation = 0
         const numberOfElements = numbers.length
+
         for (let i = 0; i<numbers.length; i++) {
             const currVal = numbers[i]
-
-            if(currVal > maxVal) {
-                maxVal = currVal
-            }
-
-            if(currVal < minVal) {
-                minVal = minVal
-            }
-
+            if(currVal > maxVal) maxVal = currVal
+            if(currVal < minVal) minVal = minVal
             summation += currVal
         }
 
