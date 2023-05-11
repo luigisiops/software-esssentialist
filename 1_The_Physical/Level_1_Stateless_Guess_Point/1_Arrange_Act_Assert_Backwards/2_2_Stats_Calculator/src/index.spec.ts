@@ -55,4 +55,11 @@ describe('stats calculator', () => {
             expect(maxVal).toBe(0)
         })
     })
+
+    describe('should be able to get the number of elements inputted', () => {
+        it('knows [1,2,3,4,5,6,7,8,9,0] has 10 elements', () => {
+            const numberLength = statsCalculator.getNumberOfElements([1,2,3,4,5,6,7,8,9,0])
+            expect(numberLength).toBe(10)
+        })
+    })
 })

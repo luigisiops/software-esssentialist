@@ -3,6 +3,10 @@ export class StatsCalculator{
 
     }
 
+    public getNumberOfElements(numbers: number[]) {
+        return numbers.length
+    }
+
     public getMax(numbers: number[]) {
         if (numbers.length == 0) return null
         let maxVal = numbers[0]
