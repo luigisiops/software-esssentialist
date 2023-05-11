@@ -31,12 +31,10 @@ describe('stats calculator', () => {
             const minVal = statsCalculator.getMin([1, 2, 3, 4, 5])
             expect(minVal).toBe(1)
         })
-
         it('knows -8 is the minimum given [-8, 21, -2, 13, 44, 5]', () => {
             const minVal = statsCalculator.getMin([-8, 21, -2, 13, 44, 5])
             expect(minVal).toBe(-8)
         })
-
         it('returns null for empty input val', () => {
             const minVal = statsCalculator.getMin([])
             expect(minVal).toBe(null)
@@ -49,7 +47,6 @@ describe('stats calculator', () => {
             const maxVal = statsCalculator.getMax([1, 2, 3, 4, 5])
             expect(maxVal).toBe(5)
         })
-
         it('knows 0 is the maximum given [-1, -2, -9, 0]', () => {
             const maxVal = statsCalculator.getMax([-1, -2, -9, 0])
             expect(maxVal).toBe(0)
@@ -60,6 +57,14 @@ describe('stats calculator', () => {
         it('knows [1,2,3,4,5,6,7,8,9,0] has 10 elements', () => {
             const numberLength = statsCalculator.getNumberOfElements([1,2,3,4,5,6,7,8,9,0])
             expect(numberLength).toBe(10)
+        })
+        it('knows [1] has 1 element', () => {
+            const numberLength = statsCalculator.getNumberOfElements([1])
+            expect(numberLength).toBe(1)
+        })
+        it('knows [] has 0 elements', () => {
+            const numberLength = statsCalculator.getNumberOfElements([])
+            expect(numberLength).toBe(0)
         })
     })
 })
