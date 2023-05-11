@@ -3,6 +3,10 @@ export class StatsCalculator{
 
     }
 
+    public getMax(numbers: number[]) {
+        return 5
+    }
+
     public getMin(numbers: number[]) {
         if (numbers.length == 0) return null
         let minVal = numbers[0]
