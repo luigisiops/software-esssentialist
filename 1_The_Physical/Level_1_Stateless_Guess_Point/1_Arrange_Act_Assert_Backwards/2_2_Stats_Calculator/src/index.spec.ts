@@ -27,5 +27,11 @@ describe('stats calculator', () => {
             expect(minVal).toBe(1)
         })
 
+        it('knows -8 is the minimum given [-8, 21, -2, 13, 44, 5]', () => {
+            const statsCalculator = StatsCalculator.create()
+            const minVal = statsCalculator.getMin([-8, 21, -2, 13, 44, 5])
+            expect(minVal).toBe(-8)
+        })
+
     })
 })
