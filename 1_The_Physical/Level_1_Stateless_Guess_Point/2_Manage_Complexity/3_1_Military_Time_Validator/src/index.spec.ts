@@ -28,4 +28,9 @@ describe('military time validator', () => {
         expect(timeValidator.exec('23:00 - 22:65')).toBeFalsy()
     })
 
+    it('knows 12:00 - 11:23 is a valid time range across two days', () => {
+        const timeValidator = TimeValidator.create()
+        expect(timeValidator.exec('12:00 - 11:23')).toBeTruthy()
+    })
+
 })
