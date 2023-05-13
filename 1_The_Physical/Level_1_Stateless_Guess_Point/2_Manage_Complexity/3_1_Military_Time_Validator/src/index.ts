@@ -14,7 +14,7 @@ export class TimeValidator{
             return false
         }
 
-        if (startMinutes > 59 || endMinutes >59) {
+        if (startMinutes > 59 || endMinutes > 59) {
             return false
         }
 
