@@ -10,14 +10,10 @@ export class TimeValidator{
         const [startHours, startMinutes] = startTime.split(":").map((val) => parseInt(val))
         const [endHours, endMinutes] = endTime.split(":").map((val) => parseInt(val) )
 
-        if (startHours > 24 || endHours > 24) {
+        if (startHours > 24 || endHours > 24 || startMinutes > 59 || endMinutes > 59) {
             return false
         }
-
-        if (startMinutes > 59 || endMinutes > 59) {
-            return false
-        }
-
+        
         return true
     } 
 
