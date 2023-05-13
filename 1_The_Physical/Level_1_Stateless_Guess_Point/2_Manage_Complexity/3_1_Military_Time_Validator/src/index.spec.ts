@@ -27,4 +27,8 @@ describe('military time validator', () => {
 
     })
 
+    it('knows that 2:00 - 3:12 is not a valid time format', () => {
+        expect(timeValidator.exec("2:00 - 3:12")).toBeFalsy()
+    })
+
 })
