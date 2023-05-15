@@ -8,7 +8,8 @@ export class TimeValidator{
     exec(time:string) {
         const timeStringFormatLength = 13;
         if (time.length != timeStringFormatLength) return false
-
+        if(!time.includes(" - ")) return false
+        
         const [startTime, endTime] = time.split(" - ")
         if (!startTime.includes(":") || !endTime.includes(":")) return false
         
