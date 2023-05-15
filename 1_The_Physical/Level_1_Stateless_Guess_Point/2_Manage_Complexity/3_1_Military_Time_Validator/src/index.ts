@@ -12,9 +12,12 @@ export class TimeValidator{
         }
 
         const [startTime, endTime] = time.split(" - ")
+        if (!startTime.includes(":") || !endTime.includes(":")) {
+            return false
+        }
+        
         const [startHours, startMinutes] = startTime.split(":").map((val) => parseInt(val))
         const [endHours, endMinutes] = endTime.split(":").map((val) => parseInt(val) )
-
         if (startHours > 24 || endHours > 24 || startMinutes > 59 || endMinutes > 59) {
             return false
         }
