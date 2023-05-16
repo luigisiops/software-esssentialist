@@ -53,4 +53,9 @@ describe('boolean calculator', () => {
         expect(booleanCalculator.exec('TRUE')).toBeTruthy()
     })
 
+    it('knows that False is false', () => {
+        const booleanCalculator = BooleanCalculator.create()
+        expect(booleanCalculator.exec('FALSE')).toBeFalsy()
+    })
+
 })

@@ -6,6 +6,7 @@ export class BooleanCalculator {
     }
 
     exec(text: string) {
-        return true
+        if (text === 'TRUE') return true
+        else return false
     }
 }
