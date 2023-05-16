@@ -48,14 +48,20 @@ Here are some examples:
 import {BooleanCalculator} from './index'
 
 describe('boolean calculator', () => {
+    let booleanCalculator: BooleanCalculator
+    beforeAll(() => {
+        booleanCalculator = BooleanCalculator.create()
+    })
     it('knows TRUE returns true', () => {
-        const booleanCalculator = BooleanCalculator.create()
         expect(booleanCalculator.exec('TRUE')).toBeTruthy()
     })
 
     it('knows that FALSE is false', () => {
-        const booleanCalculator = BooleanCalculator.create()
         expect(booleanCalculator.exec('FALSE')).toBeFalsy()
+    })
+
+    it('knows that NOT FALSE is true', () => {
+        expect(booleanCalculator.exec('NOT FALSE')).toBeTruthy()
     })
 
 })
