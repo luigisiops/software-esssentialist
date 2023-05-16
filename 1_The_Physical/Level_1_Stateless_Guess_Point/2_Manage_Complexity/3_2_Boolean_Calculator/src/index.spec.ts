@@ -67,4 +67,8 @@ describe('boolean calculator', () => {
         expect(booleanCalculator.exec('TRUE AND TRUE')).toBeTruthy()
     } )
 
+    it('knows that NOT TRUE AND TRUE is false', ()=> {
+        expect(booleanCalculator.exec('NOT TRUE AND TRUE')).toBeFalsy()
+    })
+
 })
