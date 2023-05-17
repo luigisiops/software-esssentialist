@@ -5,28 +5,32 @@ export class BooleanCalculator {
         return new BooleanCalculator()
     }
 
-    exec(text: string): boolean{
-        let i = 0
+    removeParentheses(text: string) {
         let length = text.length
-        if (text[0] == "(" && text[length-1] == ")"){
-            text = text.slice(1, text.length-1)
+        if (text[0] == "(" && text[length - 1] == ")") {
+            return text.slice(1, text.length - 1)
         }
-        let splitText = text.split(" ")
+        return text
+    }
+
+    exec(text: string): boolean{
+        if (text === 'TRUE') return true
+        if (text ==='FALSE') return false
+        
+        let textWithoutParentheses = this.removeParentheses(text)
+        let splitText = textWithoutParentheses.split(" ")
+        
+        let i = 0
         while (splitText[i] == "TRUE" || splitText[i] == "FALSE") {
             i++
         }
-        
-        if(splitText[i] === "AND" || splitText[i] === "OR"){
-            let left = splitText.slice(0, i).join(" ")
-            let right = splitText.slice(i+1, splitText.length).join(" ")
-            if (splitText[i] === "AND") return this.exec(left) && this.exec(right)
-            else return this.exec(left) || this.exec(right)
-        }
-    
-        if (splitText[0] === 'NOT') {
-            let right = splitText.slice(1, length)
-            return !(this.exec(right.join(" ")))}
-        if (text === 'TRUE') return true
-        else return false
+
+        let left = splitText.slice(0, i).join(" ")
+        let right = splitText.slice(i + 1, splitText.length).join(" ")
+
+        if (splitText[0] === 'NOT') return !(this.exec(right))
+        if (splitText[i] === "AND") return this.exec(left) && this.exec(right)
+        if(splitText[i] === "OR") return this.exec(left) || this.exec(right)
+        return false
     }
 }
