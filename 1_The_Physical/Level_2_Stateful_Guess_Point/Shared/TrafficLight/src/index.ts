@@ -8,6 +8,9 @@ export class TrafficLight {
     getState() {
         return this.state
     }
+    startCycle() {
+        this.state = "green"
+    }
     public static create(){
         return new TrafficLight()
     }
