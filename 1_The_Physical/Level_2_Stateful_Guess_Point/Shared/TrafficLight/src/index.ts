@@ -8,9 +8,14 @@ export class TrafficLight {
     getState() {
         return this.state
     }
-    startCycle() {
+    async startCycle() {
         this.state = "green"
+        jest.useFakeTimers()
+        setTimeout(() => {
+            this.state = 'yellow'
+        }, 30000)
     }
+
     public static create(){
         return new TrafficLight()
     }
