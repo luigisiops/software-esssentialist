@@ -5,6 +5,7 @@ describe('Traffic Light States', () => {
 
     beforeEach(() => {
         trafficLight = TrafficLight.create()
+        jest.useFakeTimers()
     })
     it('knows when a traffic light is off', () => {
         expect(trafficLight.getState()).toBe('off')
@@ -19,6 +20,12 @@ describe('Traffic Light States', () => {
         trafficLight.startCycle()
         jest.advanceTimersByTime(30000)
         expect(trafficLight.getState()).toBe('yellow')
+    })
+
+    it ('knows that after 35 seconds, have passed and the traffic light was turned on, to switch to red', () => {
+        trafficLight.startCycle()
+        jest.advanceTimersByTime(35000)
+        expect(trafficLight.getState()).toBe('red')
     })
 
 })
