@@ -16,6 +16,9 @@ export class TrafficLight {
         setTimeout(() => {
             this.state = 'red'
         }, 35000)
+        setTimeout(() => {
+            this.startCycle()
+        },60000)
     }
 
     public static create(){

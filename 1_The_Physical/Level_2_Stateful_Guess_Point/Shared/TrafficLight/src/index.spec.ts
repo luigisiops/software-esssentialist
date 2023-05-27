@@ -30,5 +30,10 @@ describe('Traffic Light States', () => {
         expect(trafficLight.getState()).toBe('red')
     })
 
+    
+    it('knows that after 60 seconds have passed and the traffic light was turned on, to switch to green from red', () => {
+        jest.advanceTimersByTime(60000)
+        expect(trafficLight.getState()).toBe('green')
+    })
 
 })
