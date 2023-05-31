@@ -13,6 +13,10 @@ export class TrafficLight {
 
     startCycle() {
         this.state = true
+        setTimeout(() => {
+            this.currentLight = "yellow"
+        }, 30000)
+        return 
     }
 
     getState() {

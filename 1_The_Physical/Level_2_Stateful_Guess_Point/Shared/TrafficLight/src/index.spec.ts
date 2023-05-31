@@ -13,10 +13,11 @@
 import {TrafficLight} from './index';
 
 describe('traffic light system', () => {
-    let trafficLight;
+    let trafficLight: TrafficLight;
 
     beforeEach(() => {
-        const trafficLight = TrafficLight.create()
+        jest.useFakeTimers()
+        trafficLight = TrafficLight.create()
         trafficLight.startCycle()
     })
 
@@ -32,5 +33,11 @@ describe('traffic light system', () => {
 
     it('knows that when turned on, a traffic light status should immediately be green', () => {
         expect(trafficLight.getCurrentLight()).toBe('green')
+    })
+
+
+    it('knows that given a traffic light is on and is green, after 30 seconds the status should change to yellow', () => {
+        jest.advanceTimersByTime(30000)
+        expect(trafficLight.getCurrentLight()).toBe('yellow')
     })
 })
