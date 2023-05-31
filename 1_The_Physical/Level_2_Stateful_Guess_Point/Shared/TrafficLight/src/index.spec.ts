@@ -18,4 +18,11 @@ describe('traffic light system', () => {
         trafficLight.startCycle()
         expect(trafficLight.getState()).toBe(true)
     })
+    it('knows that given a traffic light that is currently on, it can be turned off', () => {
+        const trafficLight = TrafficLight.create()
+        trafficLight.startCycle()
+        expect(trafficLight.getState()).toBe(true)
+        trafficLight.stopCycle()
+        expect(trafficLight.getState()).toBe(false)
+    })
 })

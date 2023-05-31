@@ -1,8 +1,8 @@
 export class TrafficLight {
-    private isOn: boolean;
+    private state: boolean;
 
     private constructor() {
-        this.isOn = false
+        this.state = false
     }
 
     public static create() {
@@ -10,11 +10,15 @@ export class TrafficLight {
     }
 
     startCycle() {
-        this.isOn = true
+        this.state = true
     }
 
     getState() {
-        return this.isOn
+        return this.state
+    }
+
+    stopCycle() {
+        this.state = false
     }
 
 }
