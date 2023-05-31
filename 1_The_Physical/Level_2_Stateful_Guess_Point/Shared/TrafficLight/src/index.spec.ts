@@ -13,23 +13,24 @@
 import {TrafficLight} from './index';
 
 describe('traffic light system', () => {
-    it('knows that the traffic light can be turned on', () => {
+    let trafficLight;
+
+    beforeEach(() => {
         const trafficLight = TrafficLight.create()
         trafficLight.startCycle()
+    })
+
+    it('knows that the traffic light can be turned on', () => {
         expect(trafficLight.getState()).toBe(true)
     })
 
     it('knows that given a traffic light that is currently on, it can be turned off', () => {
-        const trafficLight = TrafficLight.create()
-        trafficLight.startCycle()
         expect(trafficLight.getState()).toBe(true)
         trafficLight.stopCycle()
         expect(trafficLight.getState()).toBe(false)
     })
 
     it('knows that when turned on, a traffic light status should immediately be green', () => {
-        const trafficLight = TrafficLight.create()
-        trafficLight.startCycle()
         expect(trafficLight.getCurrentLight()).toBe('green')
     })
 })
