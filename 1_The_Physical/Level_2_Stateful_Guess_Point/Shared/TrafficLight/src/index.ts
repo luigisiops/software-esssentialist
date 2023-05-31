@@ -1,3 +1,5 @@
+import {IClock} from './clock'
+
 export class TrafficLight {
     private state: boolean;
     private currentLight: string
@@ -12,7 +14,6 @@ export class TrafficLight {
     private async startTime() {
         setInterval(() => {
             this.time += 1
-            console.log(this.time)
         }, 1000)
     }
 
