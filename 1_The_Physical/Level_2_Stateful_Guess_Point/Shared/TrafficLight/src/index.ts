@@ -26,7 +26,11 @@ export class TrafficLight {
         setInterval(() => {
             if (this.time === 30) this.currentLight = 'yellow'
             if (this.time === 35) this.currentLight = 'red'
-        },1000)
+            if (this.time === 65) {
+                this.currentLight = 'green'
+                this.time = 0
+            }
+        }, 1000)
         return 
     }
 
