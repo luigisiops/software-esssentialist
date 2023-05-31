@@ -1,8 +1,10 @@
 export class TrafficLight {
     private state: boolean;
+    private currentLight: string
 
     private constructor() {
         this.state = false
+        this.currentLight = 'green'
     }
 
     public static create() {
@@ -15,6 +17,10 @@ export class TrafficLight {
 
     getState() {
         return this.state
+    }
+
+    getCurrentLight() {
+        return this.currentLight
     }
 
     stopCycle() {
