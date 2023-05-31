@@ -1,21 +1,32 @@
 export class TrafficLight {
     private state: boolean;
     private currentLight: string
+    private time: number;
 
     private constructor() {
         this.state = false
         this.currentLight = 'green'
+        this.time = 0;
+    }
+
+    private async startTime() {
+        setInterval(() => {
+            this.time += 1
+            console.log(this.time)
+        }, 1000)
     }
 
     public static create() {
         return new TrafficLight()
     }
 
-    startCycle() {
+    async startCycle() {
         this.state = true
-        setTimeout(() => {
-            this.currentLight = "yellow"
-        }, 30000)
+        this.startTime()
+        setInterval(() => {
+            if (this.time === 30) this.currentLight = 'yellow'
+            if (this.time === 35) this.currentLight = 'red'
+        },1000)
         return 
     }
 
