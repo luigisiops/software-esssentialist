@@ -47,4 +47,11 @@ describe('Traffic Light States', () => {
         trafficLight.stop()
         expect(trafficLight.getTime()).toBe(10)
     })
+
+    it('knows that after a cycle has started and 10 seconds has passed, if the cycle is stopped, the color should still be green 30 seconds later', () => {
+        jest.advanceTimersByTime(10000)
+        trafficLight.stop()
+        jest.advanceTimersByTime(30000)
+        expect(trafficLight.getState()).toBe('green')
+    })
 })
