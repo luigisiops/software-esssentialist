@@ -13,7 +13,7 @@ export class Clock {
         return this.seconds
     }
 
-    startTime() {
+    async startTime() {
         this.intervalId = setInterval(() => {
             this.seconds += 1
         }, 1000)

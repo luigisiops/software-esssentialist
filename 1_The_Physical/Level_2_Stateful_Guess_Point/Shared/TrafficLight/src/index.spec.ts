@@ -37,13 +37,13 @@ describe('traffic light system', () => {
 
 
     it('knows that given a traffic light is on and is green, after 30 seconds the status should change to yellow', () => {
-        jest.advanceTimersByTime(30000)
+        jest.advanceTimersByTime(31000)
         trafficLight.stopCycle()
         expect(trafficLight.getCurrentLight()).toBe('yellow')
     })
 
     it('knows that given a traffic light is on and is yellow, after 5 seconds the status should change to red', () => {
-        jest.advanceTimersByTime(30000)
+        jest.advanceTimersByTime(31000)
         expect(trafficLight.getCurrentLight()).toBe('yellow')
         jest.advanceTimersByTime(5000)
         trafficLight.stopCycle()

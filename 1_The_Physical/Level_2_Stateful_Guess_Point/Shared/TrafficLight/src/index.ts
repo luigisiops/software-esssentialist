@@ -1,36 +1,32 @@
-import {IClock} from './clock'
+import {IClock, Clock} from './clock'
 
 export class TrafficLight {
     private state: boolean;
     private currentLight: string
     private time: number;
+    private clock: IClock;
+    private cycleId: string | number | NodeJS.Timeout | undefined;
 
     private constructor() {
         this.state = false
         this.currentLight = 'green'
         this.time = 0;
-    }
-
-    private async startTime() {
-        setInterval(() => {
-            this.time += 1
-        }, 1000)
+        this.clock = Clock.create()
+        this.cycleId
     }
 
     public static create() {
         return new TrafficLight()
     }
 
-    async startCycle() {
+
+    startCycle() {
         this.state = true
-        this.startTime()
-        setInterval(() => {
-            if (this.time === 30) this.currentLight = 'yellow'
-            if (this.time === 35) this.currentLight = 'red'
-            if (this.time === 65) {
-                this.currentLight = 'green'
-                this.time = 0
-            }
+        this.clock.startTime()
+        this.cycleId = setInterval(() => {
+            if (this.clock.getTime() === 30) this.currentLight = 'yellow'
+            if (this.clock.getTime() === 35) this.currentLight = 'red'
+            if (this.clock.getTime() === 65) this.currentLight = 'green'
         }, 1000)
         return 
     }
@@ -45,6 +41,7 @@ export class TrafficLight {
 
     stopCycle() {
         this.state = false
+        clearInterval(this.cycleId)
     }
 
 }
