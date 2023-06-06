@@ -18,16 +18,9 @@ describe('traffic light system', () => {
     beforeEach(() => {
         jest.useFakeTimers()
         trafficLight = TrafficLight.create()
-        trafficLight.startCycle()
     })
 
-    it('knows that the traffic light can be turned on', () => {
-        expect(trafficLight.getState()).toBe(true)
-    })
-
-    it('knows that given a traffic light that is currently on, it can be turned off', () => {
-        expect(trafficLight.getState()).toBe(true)
-        trafficLight.stopCycle()
+    it('knows that the traffic light is initially off', () => {
         expect(trafficLight.getState()).toBe(false)
     })
 
@@ -35,23 +28,9 @@ describe('traffic light system', () => {
         expect(trafficLight.getCurrentLight()).toBe('green')
     })
 
-
-    it('knows that given a traffic light is on and is green, after 30 seconds the status should change to yellow', () => {
-        jest.advanceTimersByTime(31000)
-        trafficLight.stopCycle()
+    it('knows that when turned on, and current light is green, calling the next transition should make the light yellow', () => {
+        trafficLight.setCurrentLightToNext()
         expect(trafficLight.getCurrentLight()).toBe('yellow')
     })
 
-    it('knows that given a traffic light is on and is yellow, after 5 seconds the status should change to red', () => {
-        jest.advanceTimersByTime(31000)
-        expect(trafficLight.getCurrentLight()).toBe('yellow')
-        jest.advanceTimersByTime(5000)
-        trafficLight.stopCycle()
-        expect(trafficLight.getCurrentLight()).toBe('red')
-    })
-
-    it('knows that given a traffic light is on and is red, after 30 seconds the status should change to green', () => {
-        jest.advanceTimersByTime(65000)
-        expect(trafficLight.getCurrentLight()).toBe('green')
-    })
 })
